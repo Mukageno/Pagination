@@ -95,7 +95,9 @@ export default {
 a {
   text-decoration: none;
 }
-
+ul{
+  list-style-type: none;
+}
 .products {
   padding: 100px 0;
   &-btns {
