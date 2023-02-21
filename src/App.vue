@@ -2,20 +2,8 @@
   <div class="products">
     <div class="container">
       <div class="products-content">
-        <div
-          class="products-content-items"
-          v-for="product in pag"
-          :key="product.idx"
-        >
-          <h2>Brand : {{ product.brand }}</h2>
-          <div><img :src="product.images[0]" alt="" /></div>
-          <h3>{{ product.title }}</h3>
-          <p>{{ product.description }}</p>
-          <div class="products-content-items-info">
-            <span>{{ product.price }} $</span>
-            <span>{{ product.rating }}</span>
-            <span>{{ product.discountPercentage }}</span>
-          </div>
+       
+          <Products :products="pag" />
         </div>
       </div>
       <div class="products-btns">
@@ -32,11 +20,13 @@
         <button @click="next()">next</button>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
+import Products from "./components/ProductsCard.vue";
 export default {
+  components: { Products },
   data() {
     return {
       products: null,
@@ -66,11 +56,11 @@ export default {
     },
     prev() {
       let x = document.querySelector(".products-btns-items");
-      x.scrollLeft -=100
+      x.scrollLeft -= 100;
     },
     next() {
       let x = document.querySelector(".products-btns-items");
-      x.scrollLeft +=100
+      x.scrollLeft += 100;
     },
   },
   mounted() {
@@ -95,7 +85,7 @@ export default {
 a {
   text-decoration: none;
 }
-ul{
+ul {
   list-style-type: none;
 }
 .products {
@@ -114,7 +104,7 @@ ul{
     &-items {
       overflow-x: scroll;
       overflow-y: hidden;
-      &::-webkit-scrollbar{
+      &::-webkit-scrollbar {
         height: 0;
       }
     }
